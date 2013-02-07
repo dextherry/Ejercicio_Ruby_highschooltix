@@ -1,17 +1,36 @@
-<h1>Admin login</h1>
+<div class="adminpage">
+<div class="inneradminpage">
+<% if !session[:admin_id] %>
+  <%= flash[:notice] %>
 
-<%= form_for :admin do |f| %>  
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <h1>Admin login</h1>
+
+  <%= form_for :admin do |f| %>  
+
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.text_field :password %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% else %>
+
+<ul>
+
+<li><%= link_to 'Edit admin', edit_admin_path(session[:admin_id]) %></li> 
+<li><%= link_to 'Manage admins', admins_path() %></li> 
+<li><%= link_to 'Logout', logout_path %></li> 
+</ul>
+
+<%= render :template => 'people/index' %>
 <% end %>
 
+</div>
+</div>

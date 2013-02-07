@@ -1,7 +1,7 @@
 Highschooltix::Application.routes.draw do
   post "session/login"
-  match "/login" => "session#login", :as=>:login
-
+  match "/adm" => "session#login", :as=>:adm
+   match "/logout" => "session#logout", :as=>:logout
 
   get "session/logout"
 

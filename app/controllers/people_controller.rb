@@ -2,17 +2,29 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
+
+    
+
     @people = Person.all
-    @adminpage = true
+    if not session[:admin_id]
+      redirect_to adm_path
+    else
+
     respond_to do |format|
       format.html # index.html.erb
+
+
       format.json { render json: @people }
     end
+  end
   end
 
   # GET /people/1
   # GET /people/1.json
   def show
+    if not session[:admin_id]
+      redirect_to adm_path
+    else
     @person = Person.find(params[:id])
     @adminpage = true
     respond_to do |format|
@@ -20,12 +32,13 @@ class PeopleController < ApplicationController
       format.json { render json: @person }
     end
   end
+  end
 
   # GET /people/new
   # GET /people/new.json
   def new
     @person = Person.new
-
+    @isremote = true
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @person }
@@ -34,8 +47,13 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
+    if not session[:admin_id]
+      redirect_to adm_path
+    end
+    @isremote = false
     @person = Person.find(params[:id])
-    @adminpage = true
+    
+
   end
 
   # POST /people
