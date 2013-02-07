@@ -1,0 +1,25 @@
+<% if @saved %>
+
+//alert('ok')
+$('#herecomes').html('<%= escape_javascript(render :template => "types/#{@typeselected}") %>')
+$('#herecomes').css('height', '100%')
+var position = $('#herecomes').offset()
+
+$('html, body').animate({scrollTop: $('#herecomes').offset().top+2}, 1000)
+
+//setTimeout('eliminar()',2000)
+//function eliminar(){
+//$('.all1').hide()	
+//}
+
+<% else %>
+
+	<% if @typeselected %>
+	//alert('<%= @typeselected %>')
+	<% end %>
+
+  $('.new_person').html("<%= escape_javascript(render 'form') %>")
+  $('.backselect').css("border", "1px solid red")
+
+
+<% end %>

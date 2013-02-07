@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<div class="adminpage">
+<div class="inneradminpage">
+<h1>Highschooltix admin</h1>
+
+<table>
+  <tr>
+
+  <th>Name:</th>
+  <td><%= @person.name %></td>
+</tr>
+
+<tr>
+  <th>Persontype:</th>
+  <td><%= @person.persontype %></td>
+</tr>
+
+<tr>
+  <th>Email:</th>
+  <td><%= @person.email %></td>
+</tr>
+
+<tr>
+  <th>Highschool:</th>
+  <td><%= @person.highschool %></td>
+</tr>
+
+<tr>
+  <th>State:</th>
+  <td><%= @person.state %></td>
+</tr>
+
+</table>
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
+</div>
+</div>
+
